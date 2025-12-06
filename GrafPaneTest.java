@@ -65,8 +65,10 @@ public class GrafPaneTest extends Application {
             }
             
             //pomiesanie vrcholov po vytvoreni
-            for (Vrchol v : vrcholy) {
-                v.randomPostition(500, 400);
+            while (spocitajPretnutia() < 1) {
+                for (Vrchol v : vrcholy) {
+                    v.randomPostition(500, 400);
+                }
             }
             
             // --- NÁŠ PLÁTNO (Pane) ---
