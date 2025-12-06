@@ -4,10 +4,19 @@ public class Level {
     
     public Level(int urovenLevelu) {
         this.urovenLevelu = urovenLevelu;
-        this.pocetVrcholov = this.urovenLevelu + 2;
+        this.pocetVrcholov = this.urovenLevelu + 3;
+    }
+    
+    public void setLevel(int urovenLevelu) {
+        this.urovenLevelu = urovenLevelu;
+        this.pocetVrcholov = this.urovenLevelu + 3;
     }
     
     public int getUrovenLevelu() {
         return this.urovenLevelu;
+    }
+    
+    public int getPocetVrcholov() {
+        return this.pocetVrcholov;
     }
 }

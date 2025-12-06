@@ -2,6 +2,10 @@
 comment0.target=Level
 comment1.params=urovenLevelu
 comment1.target=Level(int)
-comment2.params=
-comment2.target=int\ getUrovenLevelu()
-numComments=3
+comment2.params=urovenLevelu
+comment2.target=void\ setLevel(int)
+comment3.params=
+comment3.target=int\ getUrovenLevelu()
+comment4.params=
+comment4.target=int\ getPocetVrcholov()
+numComments=5

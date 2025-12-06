@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import java.util.Random;
 
 public class Vrchol {
 
@@ -8,6 +9,7 @@ public class Vrchol {
     private double y;
     private double offsetY;
     private double offsetX;
+    private Random nahoda;
     
     private ArrayList<Hrana> hrany;
     private Circle circle;
@@ -16,6 +18,7 @@ public class Vrchol {
         this.x = x;
         this.y = y;
         this.hrany = new ArrayList<Hrana>();
+        this.nahoda = new Random();
 
         // vytvoríme grafický bod
         this.circle = new Circle(x, y, 7); // polomer 7 px
@@ -53,6 +56,15 @@ public class Vrchol {
     
     public void addHrana(Hrana hrana) {
         this.hrany.add(hrana);
-        System.out.println("pridal som hranu");
+    }
+    
+    public void randomPostition(int maxX, int maxY) {
+        this.x = nahoda.nextInt(maxX);
+        this.y = nahoda.nextInt(maxY);
+        circle.setCenterX(this.x);
+        circle.setCenterY(this.y);
+        for (Hrana hrana : hrany) {
+            hrana.update();
+        }
     }
 }

@@ -10,4 +10,6 @@ comment4.params=
 comment4.target=javafx.scene.shape.Circle\ getCircle()
 comment5.params=hrana
 comment5.target=void\ addHrana(Hrana)
-numComments=6
+comment6.params=maxX\ maxY
+comment6.target=void\ randomPostition(int,\ int)
+numComments=7
