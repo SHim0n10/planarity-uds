@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Level
+comment1.params=urovenLevelu
+comment1.target=Level(int)
+comment2.params=
+comment2.target=int\ getUrovenLevelu()
+numComments=3

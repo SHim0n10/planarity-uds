@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Vrchol
+comment1.params=x\ y
+comment1.target=Vrchol(double,\ double)
+comment2.params=
+comment2.target=double\ getX()
+comment3.params=
+comment3.target=double\ getY()
+comment4.params=
+comment4.target=javafx.scene.shape.Circle\ getCircle()
+comment5.params=hrana
+comment5.target=void\ addHrana(Hrana)
+numComments=6

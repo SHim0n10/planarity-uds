@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=GrafPaneTest
+comment1.params=stage
+comment1.target=void\ start(javafx.stage.Stage)
+comment2.params=args
+comment2.target=void\ main(java.lang.String[])
+comment3.params=
+comment3.target=int\ spocitajPretnutia()
+comment4.params=a\ b\ c
+comment4.target=int\ orient(Vrchol,\ Vrchol,\ Vrchol)
+comment5.params=a\ b\ c\ d
+comment5.target=boolean\ edgesIntersect(Vrchol,\ Vrchol,\ Vrchol,\ Vrchol)
+numComments=6

@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Hrana
+comment1.params=vrchol1\ vrchol2
+comment1.target=Hrana(Vrchol,\ Vrchol)
+comment2.params=
+comment2.target=javafx.scene.shape.Line\ getLine()
+comment3.params=
+comment3.target=void\ update()
+comment4.params=
+comment4.target=Vrchol\ getV1()
+comment5.params=
+comment5.target=Vrchol\ getV2()
+numComments=6

@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=Skore
+comment1.params=urovenLevelu\ optimalnyPocetTahov
+comment1.target=Skore(int,\ int)
+comment2.params=
+comment2.target=void\ vypocitajSkore()
+comment3.params=
+comment3.target=int\ getAktualneSkore()
+comment4.params=
+comment4.target=int\ getMaximalneSkore()
+comment5.params=
+comment5.target=int\ getAktualnyPocetTahov()
+comment6.params=
+comment6.target=int\ getOptimalnyPocetTahov()
+comment7.params=pocetTahov
+comment7.target=void\ setAktualnyPocetTahov(int)
+numComments=8
