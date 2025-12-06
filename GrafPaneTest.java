@@ -6,10 +6,14 @@ import java.util.ArrayList;
 import javafx.scene.control.TextInputDialog;
 import java.util.Optional;
 import java.util.Random;
+import javafx.animation.AnimationTimer;
+import javafx.application.Platform;
+
 
 public class GrafPaneTest extends Application {
     private ArrayList<Vrchol> vrcholy;
     private ArrayList<Hrana> hrany;
+    private boolean isPlanar;
     
 
     @Override
@@ -19,8 +23,10 @@ public class GrafPaneTest extends Application {
         stage.show();
     }
     
+    
     public void zacniHru(Stage stage) {
         System.out.println("----------------------------------------");
+        this.isPlanar = false;
         vrcholy = new ArrayList<Vrchol>();
             hrany = new ArrayList<Hrana>();
             Random nahoda = new Random();
@@ -73,13 +79,14 @@ public class GrafPaneTest extends Application {
             
             // --- NÁŠ PLÁTNO (Pane) ---
             Pane root = new Pane();
-            
-            for (Vrchol vrchol : vrcholy) {
-                root.getChildren().add(vrchol.getCircle());
-            }
             for (Hrana hrana : hrany) {
                 root.getChildren().add(hrana.getLine());
             }
+            for (Vrchol vrchol : vrcholy) {
+                root.getChildren().add(vrchol.getCircle());
+                vrchol.addGraf(this);
+            }
+            
             
             /*
             // --- VYTVOR VRCHOLY ---
@@ -119,27 +126,41 @@ public class GrafPaneTest extends Application {
             Scene scene = new Scene(root, 600, 400);
             stage.setScene(scene);
             
-            if (1 == 2) {
+            if (this.isPlanar) {
                 koniecHry(stage);
             }
+            
+            AnimationTimer timer = new AnimationTimer() {
+                @Override
+                public void handle(long now) {
+                    if (isPlanar) {
+                        koniecHry(stage);
+                        stop(); // zastaví timer
+                    }
+                }
+            };
+            
+            timer.start();
     
     }
     
     private void koniecHry(Stage stage) {
-        TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Koniec hry");
-        dialog.setHeaderText("Chceš hrať znova?");
-        dialog.setContentText("Zadaj 'áno' alebo 'nie':");
-
-        Optional<String> result = dialog.showAndWait();
-
-        result.ifPresent(answer -> {
-            if (answer.equalsIgnoreCase("áno")) {
-                zacniHru(stage); // spustí hru znova
-            } else {
-                System.out.println("Hra skončila. Dovidenia!");
-                stage.close();
-            }
+        Platform.runLater(() -> {
+            TextInputDialog dialog = new TextInputDialog();
+            dialog.setTitle("Koniec hry");
+            dialog.setHeaderText("Chceš hrať znova?");
+            dialog.setContentText("Zadaj 'áno' alebo 'nie':");
+    
+            Optional<String> result = dialog.showAndWait();
+    
+            result.ifPresent(answer -> {
+                if (answer.equalsIgnoreCase("áno")) {
+                    zacniHru(stage); // spustí hru znova
+                } else {
+                    System.out.println("Hra skončila. Dovidenia!");
+                    stage.close();
+                }
+            });
         });
     }
 
@@ -195,7 +216,7 @@ public class GrafPaneTest extends Application {
             return false;
         else {
             for (Hrana hrana : hrany) {
-                if (h == hrana ) {
+                if (h == hrana) {
                     continue;
                 }
                 else if (h.getV1() == hrana.getV1() || h.getV1() == hrana.getV2() ||
@@ -203,17 +224,17 @@ public class GrafPaneTest extends Application {
                     continue;
                 }
                 else if (edgesIntersect(h.getV1(), h.getV2(), hrana.getV1(), hrana.getV2())){
-                    System.out.println("temp h:");
-                    System.out.println(h.getV1().getX()+ "  " +h.getV1().getY());
-                    System.out.println(h.getV2().getX()+ "  " +h.getV2().getY());
-                    System.out.println("nakreslena hrana:");
-                    System.out.println(hrana.getV1().getX()+ "  " +hrana.getV1().getY());
-                    System.out.println(hrana.getV2().getX()+ "  " +hrana.getV2().getY());
-                    
                     return true;
                 }
             }
             return false;
+        }
+    }
+    
+    public void update() {
+        if (spocitajPretnutia() == 0) {
+            System.out.println("vyhral si");
+            this.isPlanar = true;
         }
     }
 }

@@ -12,6 +12,7 @@ public class Vrchol {
     private Random nahoda;
     
     private ArrayList<Hrana> hrany;
+    private GrafPaneTest graf;
     private Circle circle;
 
     public Vrchol(double x, double y) {
@@ -37,6 +38,7 @@ public class Vrchol {
             circle.setCenterY(this.y);
             for (Hrana hrana : hrany) {
                 hrana.update();
+                graf.update();
             }
         });
     }
@@ -56,6 +58,10 @@ public class Vrchol {
     
     public void addHrana(Hrana hrana) {
         this.hrany.add(hrana);
+    }
+    
+    public void addGraf(GrafPaneTest graf){
+        this.graf = graf;
     }
     
     public void randomPostition(int maxX, int maxY) {
